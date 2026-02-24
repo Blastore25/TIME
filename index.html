@@ -3,78 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TIME - Terapia Integrativa de Medicina y Energía</title>
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#4a7c59">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Georgia', serif; line-height: 1.6; color: #333; background: linear-gradient(to bottom, #f0f8f0, #e8f5e8); }
-    header { background: #2d5a3a; color: white; padding: 2rem 0; text-align: center; }
-    h1 { font-size: 3rem; margin-bottom: 0.5rem; }
-    subtitle { font-size: 1.2rem; opacity: 0.9; }
-    section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
-    .programs { background: white; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-    .card { background: #f9f9f9; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s; }
-    .card:hover { transform: translateY(-5px); }
-    .pillars { background: #e8f5e8; }
-    .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-    footer { background: #2d5a3a; color: white; text-align: center; padding: 2rem; }
-    @media (max-width: 768px) { h1 { font-size: 2rem; } }
-  </style>
+  <title>TIME – Terapia Integral de Medicina y Energía</title>
+  <meta name="description" content="Medicina herbal personalizada, plantas medicinales, calendario Tzolkin maya, acompañamiento cuerpo-energía.">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#5c4033">
+  <link rel="stylesheet" href="css/style.css?v=2">
 </head>
 <body>
-  <header>
-    <h1>TIME</h1>
-    <p class="subtitle">Terapia Integrativa de Medicina y Energía</p>
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="index.html" class="logo">
+        <img src="images/logo-time.png" alt="TIME" width="140">
+        <span class="tagline" data-es="Terapia Integral de Medicina y Energía" data-en="Trascendental Integration of Medicine and Energy">Terapia Integral de Medicina y Energía</span>
+      </a>
+      <button type="button" class="menu-btn" aria-label="Abrir menú">☰</button>
+      <nav id="nav-main" class="nav-main">
+        <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
+        <a href="medicina-herbal.html" data-es="Medicina Herbal" data-en="Herbal Medicine">Medicina Herbal</a>
+        <a href="tiempo-sagrado.html" data-es="Tiempo Sagrado" data-en="Sacred Time">Tiempo Sagrado</a>
+        <a href="servicios.html" data-es="Servicios" data-en="Services">Servicios</a>
+        <a href="sobre-mi.html" data-es="Sobre mí" data-en="About me">Sobre mí</a>
+        <a href="blog.html" data-es="Blog" data-en="Blog">Blog</a>
+        <a href="contacto.html" data-es="Contacto" data-en="Contact">Contacto</a>
+        <button type="button" class="lang-toggle" aria-label="Cambiar idioma">EN</button>
+      </nav>
+    </div>
   </header>
-  <section id="hero">
-    <h2>Educación y Acompañamiento Consciente</h2>
-    <p>Medicina herbal personalizada, plantas medicinales, calendario Tzolkin maya, integración cuerpo-energía.</p>
-    <button>Comenzar</button>
-  </section>
-  <section class="programs">
-    <h2>Nuestros Programas</h2>
-    <div class="card">
-      <h3>Medicina Herbal Personalizada</h3>
-      <p>Terapias a medida con plantas medicinales.</p>
-    </div>
-    <div class="card">
-      <h3>Educación Plantas Medicinales</h3>
-      <p>Aprende sobre el poder de las hierbas.</p>
-    </div>
-    <div class="card">
-      <h3>Calendario Sagrado Maya (Tzolkin)</h3>
-      <p>Integración energética con el Tzolkin.</p>
-    </div>
-    <div class="card">
-      <h3>Acompañamiento Cuerpo-Energía</h3>
-      <p>Conciencia y equilibrio holístico.</p>
-    </div>
-  </section>
-  <section class="pillars">
-    <h2>Pilares Educativos</h2>
-    <div class="pillars-grid">
-      <div>
-        <h3>Raíces en la Naturaleza</h3>
-        <p>Enseñanzas de las plantas y energía ancestral.</p>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="logo-large">
+          <img src="images/logo-time.png" alt="TIME" width="180">
+        </div>
+        <h1 data-es="Educación y Acompañamiento Consciente" data-en="Education and Conscious Support">Educación y Acompañamiento Consciente</h1>
+        <p class="intro" data-es="Medicina herbal personalizada, educación sobre plantas medicinales, integración del calendario sagrado maya (Tzolkin) y acompañamiento cuerpo–energía. Un espacio íntimo, artesanal y profesional." data-en="Personalized herbal medicine, education on medicinal plants, integration of the Mayan sacred calendar (Tzolkin) and body–energy support. An intimate, artisanal and professional space.">Medicina herbal personalizada, educación sobre plantas medicinales, integración del calendario sagrado maya (Tzolkin) y acompañamiento cuerpo–energía. Un espacio íntimo, artesanal y profesional.</p>
+        <div class="hero-ctas">
+          <a href="medicina-herbal.html" class="btn btn-primary" data-es="Explorar Medicina Herbal" data-en="Explore Herbal Medicine">Explorar Medicina Herbal</a>
+          <a href="tiempo-sagrado.html" class="btn btn-secondary" data-es="Conocer tu Energía (Tzolkin)" data-en="Discover Your Energy (Tzolkin)">Conocer tu Energía (Tzolkin)</a>
+        </div>
       </div>
-      <div>
-        <h3>Conexión desde el Corazón</h3>
-        <p>Acompañamiento íntimo y artesanal.</p>
-      </div>
-      <div>
-        <h3>Participación Consciente</h3>
-        <p>Tu rol en el proceso regenerativo.</p>
-      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p data-es="© 2026 TIME. Espacio de sanación y educación." data-en="© 2026 TIME. Space for healing and education.">© 2026 TIME. Espacio de sanación y educación.</p>
     </div>
-  </section>
-  <footer>
-    <p>&copy; 2026 TIME. Espacio de sanación y educación.</p>
   </footer>
+
+  <script src="js/main.js"></script>
   <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js');
-    }
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
   </script>
 </body>
 </html>

@@ -1,0 +1,355 @@
+/* TIME – Terapia Integral de Medicina y Energía
+   Paleta: beige arena, terracota, verde oliva, marrón cacao, blanco cálido, azul profundo (detalle) */
+
+:root {
+  /* Colores tierra, no saturados */
+  --beige-arena: #d4c4a8;
+  --terracota: #b8734f;
+  --verde-oliva: #6b7c4a;
+  --marron-cacao: #5c4033;
+  --blanco-calido: #faf8f5;
+  --azul-mariposa: #2c4a6e;
+  --arena-claro: #e8e0d4;
+  --texto: #4a4038;
+  --texto-suave: #6b5f54;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--texto);
+  background: var(--blanco-calido);
+}
+
+/* Títulos: serif elegante */
+h1, h2, h3, .font-serif {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-weight: 400;
+  color: var(--marron-cacao);
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.25rem); letter-spacing: 0.02em; }
+h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); margin-bottom: 1.5rem; }
+h3 { font-size: 1.25rem; margin-bottom: 0.75rem; }
+
+a {
+  color: var(--verde-oliva);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover { color: var(--terracota); }
+
+img { max-width: 100%; height: auto; display: block; }
+
+/* ----- Header / Nav (estilo Ecoversity: limpio, horizontal) ----- */
+.site-header {
+  background: var(--blanco-calido);
+  border-bottom: 1px solid var(--arena-claro);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--marron-cacao);
+  font-family: Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.logo svg { flex-shrink: 0; }
+.logo .tagline {
+  font-family: system-ui, sans-serif;
+  font-size: 0.7rem;
+  color: var(--texto-suave);
+  font-weight: 400;
+  display: block;
+}
+
+.nav-main {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+}
+.nav-main a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.75rem;
+  min-width: 5rem;
+  color: var(--texto);
+  font-size: 0.95rem;
+  text-align: center;
+}
+.nav-main a:hover,
+.nav-main a.active { color: var(--verde-oliva); }
+.nav-main a.active { font-weight: 600; }
+
+.lang-toggle {
+  background: none;
+  border: 1px solid var(--arena-claro);
+  padding: 0.35rem 0.6rem;
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+  cursor: pointer;
+  border-radius: 4px;
+}
+.lang-toggle:hover { color: var(--marron-cacao); border-color: var(--beige-arena); }
+
+.menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: var(--marron-cacao);
+}
+
+@media (max-width: 900px) {
+  .menu-btn { display: block; }
+  .logo .tagline { display: none; }
+  .nav-main {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--blanco-calido);
+    border-left: 1px solid var(--arena-claro);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 4rem 1.5rem 1.5rem;
+    gap: 0;
+    transform: translateX(100%);
+    transition: transform 0.25s;
+    z-index: 101;
+  }
+  .nav-main.is-open { transform: translateX(0); }
+  .nav-main a { padding: 0.75rem 0; border-bottom: 1px solid var(--arena-claro); }
+  .nav-main a:last-child { border-bottom: none; }
+}
+
+/* ----- Contenedor general ----- */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ----- Hero / Inicio ----- */
+.hero {
+  padding: 4rem 2rem 5rem;
+  text-align: center;
+  background: linear-gradient(180deg, var(--arena-claro) 0%, var(--blanco-calido) 100%);
+}
+.hero .logo-large { margin-bottom: 2rem; }
+.hero h1 { margin-bottom: 0.5rem; }
+.hero .intro {
+  max-width: 560px;
+  margin: 0 auto 2.5rem;
+  font-size: 1.05rem;
+  color: var(--texto-suave);
+  line-height: 1.7;
+}
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+.btn {
+  display: inline-block;
+  padding: 0.85rem 1.75rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  border: none;
+  text-align: center;
+}
+.btn-primary {
+  background: var(--verde-oliva);
+  color: var(--blanco-calido);
+}
+.btn-primary:hover { background: var(--marron-cacao); color: var(--blanco-calido); }
+.btn-secondary {
+  background: transparent;
+  color: var(--marron-cacao);
+  border: 1px solid var(--marron-cacao);
+}
+.btn-secondary:hover { background: var(--arena-claro); }
+
+/* ----- Secciones genéricas ----- */
+.section {
+  padding: 4rem 2rem;
+}
+.section--alt { background: var(--arena-claro); }
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/* Cards (programas, servicios) */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+.card {
+  background: var(--blanco-calido);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--arena-claro);
+  transition: box-shadow 0.2s;
+}
+.card:hover { box-shadow: 0 8px 24px rgba(92,64,51,0.08); }
+.card-img {
+  aspect-ratio: 4/3;
+  background: var(--beige-arena);
+  object-fit: cover;
+}
+.card-body { padding: 1.75rem; }
+.card h3 { margin-bottom: 0.5rem; }
+.card p { color: var(--texto-suave); font-size: 0.95rem; margin-bottom: 1rem; }
+.card .btn { margin-top: 0.5rem; }
+
+/* Bloques de texto + imagen */
+.block-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  padding: 3rem 0;
+}
+.block-row:nth-child(even) { direction: rtl; }
+.block-row:nth-child(even) > * { direction: ltr; }
+.block-row .text h2 { margin-bottom: 1rem; }
+.block-row .text p { color: var(--texto-suave); margin-bottom: 1rem; }
+.block-row .img-wrap {
+  aspect-ratio: 4/3;
+  background: var(--arena-claro);
+  border-radius: 8px;
+  overflow: hidden;
+}
+@media (max-width: 768px) {
+  .block-row { grid-template-columns: 1fr; gap: 1.5rem; direction: ltr; }
+  .block-row:nth-child(even) { direction: ltr; }
+}
+
+/* Lista de servicios */
+.service-list { list-style: none; }
+.service-list li {
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--arena-claro);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: start;
+}
+.service-list li:last-child { border-bottom: none; }
+.service-list h3 { margin-bottom: 0.5rem; }
+.service-list .meta { font-size: 0.9rem; color: var(--texto-suave); margin-top: 0.5rem; }
+
+/* Formulario contacto */
+.form-group { margin-bottom: 1.25rem; }
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+  margin-bottom: 0.35rem;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--arena-claro);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 1rem;
+  background: var(--blanco-calido);
+}
+.form-group textarea { min-height: 140px; resize: vertical; }
+.contact-extra {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--arena-claro);
+  font-size: 0.95rem;
+  color: var(--texto-suave);
+}
+.contact-extra a { display: inline-block; margin-top: 0.25rem; }
+
+/* Footer */
+.site-footer {
+  background: var(--marron-cacao);
+  color: var(--blanco-calido);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+.site-footer a { color: var(--beige-arena); }
+.site-footer p { font-size: 0.9rem; opacity: 0.9; }
+
+/* Utilidades */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+/* ----- Tiempo Sagrado / Sacred Time: watermark background ----- */
+/* To move the image: edit background-position below (e.g. 50px = higher, 80px = lower) */
+.page-sacred-time .sacred-time-main {
+  position: relative;
+  min-height: 50vh;
+}
+.page-sacred-time .sacred-time-main::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../images/sacred-time-bg.png');
+  background-size: cover;
+  /* Vertical position: smaller value = image higher, larger = lower (e.g. 50px, 65px, 80px) */
+  background-position: center -200px;
+  background-repeat: no-repeat;
+  opacity: 0.12;
+  z-index: -1;
+  pointer-events: none;
+}
+.page-sacred-time .sacred-time-main .section,
+.page-sacred-time .sacred-time-main .container {
+  position: relative;
+  z-index: 1;
+}

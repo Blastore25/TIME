@@ -1,17 +1,70 @@
-// PWA Service Worker
-const CACHE_NAME = 'time-v1';
-const urlsToCache = ['/', '/index.html', '/manifest.json'];
+// PWA Service Worker – TIME
+const CACHE_NAME = 'time-v5';
+const urlsToCache = [
+  'index.html',
+  'medicina-herbal.html',
+  'tiempo-sagrado.html',
+  'servicios.html',
+  'sobre-mi.html',
+  'blog.html',
+  'contacto.html',
+  'manifest.json',
+  'css/style.css',
+  'js/main.js',
+  'images/logo-time.png',
+  'images/sacred-time-bg.png'
+];
 
-self.addEventListener('install', event => {
+self.addEventListener('install', function (event) {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(urlsToCache))
+      .then(function (cache) {
+        return cache.addAll(urlsToCache.map(function (u) {
+          return new Request(u, { cache: 'reload' });
+        })).catch(function () {});
+      })
+  );
+  self.skipWaiting();
+});
+
+self.addEventListener('fetch', function (event) {
+  if (event.request.mode !== 'navigate' && !event.request.url.match(/\.(css|js|json|svg|ico|png)$/)) {
+    return;
+  }
+  var url = event.request.url;
+  var isCssOrJs = /\.(css|js)(\?|$)/.test(url);
+  if (isCssOrJs) {
+    event.respondWith(
+      fetch(event.request)
+        .then(function (response) {
+          var clone = response.clone();
+          caches.open(CACHE_NAME).then(function (cache) {
+            cache.put(event.request, clone);
+          });
+          return response;
+        })
+        .catch(function () {
+          return caches.match(event.request);
+        })
+    );
+    return;
+  }
+  event.respondWith(
+    caches.match(event.request)
+      .then(function (response) {
+        return response || fetch(event.request);
+      })
   );
 });
 
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => response || fetch(event.request))
+self.addEventListener('activate', function (event) {
+  event.waitUntil(
+    caches.keys().then(function (names) {
+      return Promise.all(
+        names.filter(function (name) { return name !== CACHE_NAME; })
+          .map(function (name) { return caches.delete(name); })
+      );
+    })
   );
+  self.clients.claim();
 });

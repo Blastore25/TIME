@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto | TIME</title>
+  <meta name="description" content="Formulario de contacto, email, WhatsApp y redes para TIME.">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#5c4033">
+  <link rel="stylesheet" href="css/style.css?v=2">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="index.html" class="logo">
+        <img src="images/logo-time.png" alt="TIME" width="140">
+        <span class="tagline" data-es="Terapia Integral de Medicina y Energía" data-en="Trascendental Integration of Medicine and Energy">Terapia Integral de Medicina y Energía</span>
+      </a>
+      <button type="button" class="menu-btn" aria-label="Abrir menú">☰</button>
+      <nav id="nav-main" class="nav-main">
+        <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
+        <a href="medicina-herbal.html" data-es="Medicina Herbal" data-en="Herbal Medicine">Medicina Herbal</a>
+        <a href="tiempo-sagrado.html" data-es="Tiempo Sagrado" data-en="Sacred Time">Tiempo Sagrado</a>
+        <a href="servicios.html" data-es="Servicios" data-en="Services">Servicios</a>
+        <a href="sobre-mi.html" data-es="Sobre mí" data-en="About me">Sobre mí</a>
+        <a href="blog.html" data-es="Blog" data-en="Blog">Blog</a>
+        <a href="contacto.html" data-es="Contacto" data-en="Contact">Contacto</a>
+        <button type="button" class="lang-toggle" aria-label="Cambiar idioma">EN</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container" style="max-width: 560px;">
+        <h1 class="section-title font-serif" data-es="Contacto" data-en="Contact">Contacto</h1>
+        <p class="intro" style="text-align: center; color: var(--texto-suave); margin-bottom: 2rem;" data-es="Escribe para agendar una consulta, solicitar una lectura o simplemente conectar." data-en="Write to book a consultation, request a reading or simply connect.">Escribe para agendar una consulta, solicitar una lectura o simplemente conectar.</p>
+
+        <form action="#" method="post" id="contact-form">
+          <div class="form-group">
+            <label for="name" data-es="Nombre" data-en="Name">Nombre</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="message" data-es="Mensaje" data-en="Message">Mensaje</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;" data-es="Enviar" data-en="Send">Enviar</button>
+        </form>
+
+        <div class="contact-extra">
+          <p data-es="También puedes escribirme por:" data-en="You can also reach me at:">También puedes escribirme por:</p>
+          <p><strong>Email:</strong> <a href="mailto:tu@email.com">tu@email.com</a></p>
+          <p><strong>WhatsApp:</strong> <a href="https://wa.me/1234567890" target="_blank" rel="noopener">+00 000 000 0000</a></p>
+          <p style="margin-top: 1rem;" data-es="Redes sociales:" data-en="Social media:">Redes sociales:</p>
+          <a href="#" style="margin-right: 1rem;">Instagram</a>
+          <a href="#">Facebook</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p data-es="© 2026 TIME. Espacio de sanación y educación." data-en="© 2026 TIME. Space for healing and education.">© 2026 TIME. Espacio de sanación y educación.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
+  </script>
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert(document.documentElement.lang === 'es' ? 'Por ahora el formulario es de ejemplo. Usa el email o WhatsApp para contactar.' : 'The form is a placeholder for now. Use email or WhatsApp to get in touch.');
+    });
+  </script>
+</body>
+</html>
