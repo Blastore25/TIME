@@ -1,5 +1,5 @@
-// PWA Service Worker – TIME
-const CACHE_NAME = 'time-v5';
+// PWA Service Worker – TIME (network-first when online so updates show after one refresh)
+const CACHE_NAME = 'time-v7';
 const urlsToCache = [
   'index.html',
   'medicina-herbal.html',
@@ -11,7 +11,7 @@ const urlsToCache = [
   'manifest.json',
   'css/style.css',
   'js/main.js',
-  'images/logo-time.png',
+  'images/logo-plant.png',
   'images/sacred-time-bg.png'
 ];
 
@@ -28,14 +28,19 @@ self.addEventListener('install', function (event) {
 });
 
 self.addEventListener('fetch', function (event) {
-  if (event.request.mode !== 'navigate' && !event.request.url.match(/\.(css|js|json|svg|ico|png)$/)) {
+  var url = event.request.url;
+  var isHtml = event.request.mode === 'navigate';
+  var isCssOrJs = /\.(css|js)(\?|$)/.test(url);
+  var isImage = /\.(png|svg|jpg|jpeg|webp|ico|gif)(\?|$)/.test(url);
+  var isManifest = /manifest\.json(\?|$)/.test(url);
+
+  if (!isHtml && !isCssOrJs && !isImage && !isManifest) {
     return;
   }
-  var url = event.request.url;
-  var isCssOrJs = /\.(css|js)(\?|$)/.test(url);
-  if (isCssOrJs) {
+
+  if (isCssOrJs || isHtml || isImage || isManifest) {
     event.respondWith(
-      fetch(event.request)
+      fetch(event.request, { cache: 'reload' })
         .then(function (response) {
           var clone = response.clone();
           caches.open(CACHE_NAME).then(function (cache) {
@@ -49,6 +54,7 @@ self.addEventListener('fetch', function (event) {
     );
     return;
   }
+
   event.respondWith(
     caches.match(event.request)
       .then(function (response) {

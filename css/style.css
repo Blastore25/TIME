@@ -80,7 +80,8 @@ img { max-width: 100%; height: auto; display: block; }
   font-size: 1.5rem;
   font-weight: 400;
 }
-.logo svg { flex-shrink: 0; }
+.logo img,
+.logo svg { flex-shrink: 0; max-width: 100%; height: auto; }
 .logo .tagline {
   font-family: system-ui, sans-serif;
   font-size: 0.7rem;
@@ -120,6 +121,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .lang-toggle:hover { color: var(--marron-cacao); border-color: var(--beige-arena); }
 
+/* Hamburger menu button (☰): adjust font-size to change icon size (e.g. 1.5rem, 2rem) */
 .menu-btn {
   display: none;
   background: none;
@@ -127,9 +129,15 @@ img { max-width: 100%; height: auto; display: block; }
   padding: 0.5rem;
   cursor: pointer;
   color: var(--marron-cacao);
+  font-size: 3rem;
+  line-height: 1;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
+  .logo .tagline { display: none; }
+}
+
+@media (max-width: 1024px) {
   .menu-btn { display: block; }
   .logo .tagline { display: none; }
   .nav-main {
@@ -302,6 +310,8 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--texto-suave);
 }
 .contact-extra a { display: inline-block; margin-top: 0.25rem; }
+.contact-extra .social-links a { color: var(--marron-cacao); margin-top: 0; transition: color 0.2s, transform 0.2s; }
+.contact-extra .social-links a:hover { color: var(--verde-oliva); transform: scale(1.1); }
 
 /* Footer */
 .site-footer {
@@ -350,6 +360,36 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .page-sacred-time .sacred-time-main .section,
 .page-sacred-time .sacred-time-main .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ----- Inicio / Home: logo as watermarked background ----- */
+.page-inicio .inicio-main {
+  position: relative;
+  min-height: 50vh;
+}
+.page-inicio .inicio-main::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../images/logo-plant.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0.12;
+  z-index: -1;
+  pointer-events: none;
+}
+.page-inicio .inicio-main .hero {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(232, 224, 212, 0.4) 0%, rgba(250, 248, 245, 0.82) 100%);
+}
+.page-inicio .inicio-main .container {
   position: relative;
   z-index: 1;
 }

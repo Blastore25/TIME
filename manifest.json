@@ -1,6 +1,7 @@
 {
   "name": "TIME - Terapia Integral de Medicina y Energía",
   "short_name": "TIME",
+  "version": "1.0.1",
   "description": "Medicina herbal personalizada, Tzolkin y acompañamiento cuerpo-energía.",
   "start_url": "/index.html",
   "display": "standalone",
@@ -9,7 +10,7 @@
   "lang": "es",
   "icons": [
     {
-      "src": "images/logo-time.png",
+      "src": "images/logo-plant.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
