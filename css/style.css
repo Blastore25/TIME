@@ -173,13 +173,12 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 @media (max-width: 768px) {
-  .logo .tagline { font-size: 0.6rem; }
+  .logo .tagline { font-size: 1.4rem; }
 }
 
 @media (max-width: 480px) {
   .logo { gap: 0.5rem; }
-  .logo img { width: 50px; }
-  .logo .tagline { font-size: 0.55rem; }
+  .logo .tagline { font-size: 1.4rem; }
 }
 
 /* ----- Contenedor general ----- */
