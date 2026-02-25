@@ -54,12 +54,27 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* ----- Header / Nav (estilo Ecoversity: limpio, horizontal) ----- */
 .site-header {
-  background: var(--blanco-calido);
+  position: relative;
   border-bottom: 1px solid var(--arena-claro);
   padding: 1rem 2rem;
   position: sticky;
   top: 0;
   z-index: 100;
+}
+
+.site-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../images/header-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.4;
+  z-index: -1;
 }
 
 .header-inner {
@@ -84,10 +99,11 @@ img { max-width: 100%; height: auto; display: block; }
 .logo svg { flex-shrink: 0; max-width: 100%; height: auto; }
 .logo .tagline {
   font-family: system-ui, sans-serif;
-  font-size: 0.7rem;
-  color: var(--texto-suave);
-  font-weight: 400;
+  font-size: 1.4rem;
+  color: var(--texto);
+  font-weight: 700;
   display: block;
+  text-align: left;
 }
 
 .nav-main {
