@@ -133,13 +133,8 @@ img { max-width: 100%; height: auto; display: block; }
   line-height: 1;
 }
 
-@media (max-width: 1100px) {
-  .logo .tagline { display: none; }
-}
-
 @media (max-width: 1024px) {
   .menu-btn { display: block; }
-  .logo .tagline { display: none; }
   .nav-main {
     position: fixed;
     top: 0;
@@ -159,6 +154,16 @@ img { max-width: 100%; height: auto; display: block; }
   .nav-main.is-open { transform: translateX(0); }
   .nav-main a { padding: 0.75rem 0; border-bottom: 1px solid var(--arena-claro); }
   .nav-main a:last-child { border-bottom: none; }
+}
+
+@media (max-width: 768px) {
+  .logo .tagline { font-size: 0.6rem; }
+}
+
+@media (max-width: 480px) {
+  .logo { gap: 0.5rem; }
+  .logo img { width: 50px; }
+  .logo .tagline { font-size: 0.55rem; }
 }
 
 /* ----- Contenedor general ----- */
