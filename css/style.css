@@ -1,5 +1,22 @@
 /* TIME – Terapia Integral de Medicina y Energía
-   Paleta: beige arena, terracota, verde oliva, marrón cacao, blanco cálido, azul profundo (detalle) */
+   Paleta: beige arena, terracota, verde oliva, marrón cacao, blanco cálido, azul profundo (detalle)
+   Fonts: Early Quake (title/tagline), Cormorant Garamond (headings), Source Sans 3 (body) */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap');
+
+@font-face {
+  font-family: 'Early Quake';
+  src: url('../fonts/myfonts_order_6958304362666/EarlyQuake-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Mad Rascal';
+  src: url('../fonts/myfonts_order_6958296629418/MadRascal-MediumExpanded.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   /* Colores tierra, no saturados */
@@ -25,16 +42,16 @@ html {
 }
 
 body {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family: 'Source Sans 3', 'Segoe UI', system-ui, sans-serif;
   font-size: 1rem;
   line-height: 1.65;
   color: var(--texto);
   background: var(--blanco-calido);
 }
 
-/* Títulos: serif elegante */
+/* Títulos: serif elegante (Cormorant Garamond) */
 h1, h2, h3, .font-serif {
-  font-family: 'Georgia', 'Times New Roman', serif;
+  font-family: 'Cormorant Garamond', Georgia, serif;
   font-weight: 400;
   color: var(--marron-cacao);
 }
@@ -52,29 +69,32 @@ a:hover { color: var(--terracota); }
 
 img { max-width: 100%; height: auto; display: block; }
 
-/* ----- Header / Nav (estilo Ecoversity: limpio, horizontal) ----- */
+/* ----- Header: dark green background, white title & menu ----- */
 .site-header {
   position: relative;
-  border-bottom: 1px solid var(--arena-claro);
+  background: #1a4d1a;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
   padding: 1rem 2rem;
   position: sticky;
   top: 0;
   z-index: 100;
 }
-
-.site-header::before {
+.site-header::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('../images/header-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 1;
-  z-index: -1;
+  inset: 0;
+  background: linear-gradient(rgba(255,255,255,0.09), rgba(255,255,255,0.06)), rgba(0,0,0,0.10);
+  pointer-events: none;
+  z-index: 0;
+}
+.site-header .header-inner {
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  animation: headerTextFadeIn 0.8s ease-out 0.1s forwards;
+}
+@keyframes headerTextFadeIn {
+  to { opacity: 1; }
 }
 
 .header-inner {
@@ -90,20 +110,33 @@ img { max-width: 100%; height: auto; display: block; }
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  color: var(--marron-cacao);
-  font-family: Georgia, serif;
+  color: #fff;
+  font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 1.5rem;
   font-weight: 400;
+  letter-spacing: 0.03em;
 }
 .logo img,
 .logo svg { flex-shrink: 0; max-width: 100%; height: auto; }
-.logo .tagline {
-  font-family: system-ui, sans-serif;
+.logo .logo-short {
+  font-family: 'Early Quake', 'Cormorant Garamond', Georgia, serif;
   font-size: 1.4rem;
-  color: var(--texto);
-  font-weight: 700;
-  display: block;
+  color: #fff;
+  font-weight: normal;
+  display: none;
+}
+.logo .tagline {
+  font-family: 'Early Quake', 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.4rem;
+  color: #fff;
+  font-weight: 400;
+  display: inline-block;
   text-align: left;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
 .nav-main {
@@ -118,24 +151,27 @@ img { max-width: 100%; height: auto; display: block; }
   justify-content: center;
   padding: 0.5rem 0.75rem;
   min-width: 5rem;
-  color: var(--texto);
+  font-family: 'Mad Rascal', 'Cormorant Garamond', Georgia, serif;
+  color: #fff;
   font-size: 0.95rem;
   text-align: center;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 .nav-main a:hover,
-.nav-main a.active { color: var(--verde-oliva); }
+.nav-main a.active { color: rgba(255,255,255,0.9); }
 .nav-main a.active { font-weight: 600; }
 
 .lang-toggle {
-  background: none;
-  border: 1px solid var(--arena-claro);
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.5);
   padding: 0.35rem 0.6rem;
   font-size: 0.8rem;
-  color: var(--texto-suave);
+  color: #fff;
   cursor: pointer;
   border-radius: 4px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
-.lang-toggle:hover { color: var(--marron-cacao); border-color: var(--beige-arena); }
+.lang-toggle:hover { color: #fff; border-color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.25); }
 
 /* Hamburger menu button (☰): adjust font-size to change icon size (e.g. 1.5rem, 2rem) */
 .menu-btn {
@@ -144,9 +180,10 @@ img { max-width: 100%; height: auto; display: block; }
   border: none;
   padding: 0.5rem;
   cursor: pointer;
-  color: var(--marron-cacao);
+  color: #fff;
   font-size: 3rem;
   line-height: 1;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
 @media (max-width: 1024px) {
@@ -168,12 +205,25 @@ img { max-width: 100%; height: auto; display: block; }
     z-index: 101;
   }
   .nav-main.is-open { transform: translateX(0); }
-  .nav-main a { padding: 0.75rem 0; border-bottom: 1px solid var(--arena-claro); }
+  .nav-main a { padding: 0.75rem 0; border-bottom: 1px solid var(--arena-claro); color: var(--texto); text-shadow: none; }
   .nav-main a:last-child { border-bottom: none; }
+  .nav-main .lang-toggle { color: var(--texto); background: rgba(0,0,0,0.06); border-color: var(--arena-claro); text-shadow: none; }
+  .nav-main .lang-toggle:hover { color: var(--marron-cacao); border-color: var(--beige-arena); }
 }
 
 @media (max-width: 768px) {
   .logo .tagline { font-size: 1.4rem; }
+}
+
+/* Narrow / portrait: show only "TIME"; wide: show full tagline */
+@media (max-width: 700px), (orientation: portrait) and (max-width: 900px) {
+  .logo .logo-short { display: inline-block; }
+  .logo .tagline { display: none !important; }
+}
+
+@media (min-width: 701px) and (orientation: landscape) {
+  .logo .logo-short { display: none; }
+  .logo .tagline { display: inline-block; }
 }
 
 @media (max-width: 480px) {
@@ -486,4 +536,3 @@ img { max-width: 100%; height: auto; display: block; }
   position: relative;
   z-index: 1;
 }
-.logo .tagline { text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
