@@ -64,6 +64,7 @@
 
     setActiveNav();
     initCarousels();
+    initScrollAnimations();
   });
 
   function initCarousels() {
@@ -167,6 +168,35 @@
 
       carousel.addEventListener('mouseenter', stopAutoplay);
       carousel.addEventListener('mouseleave', startAutoplay);
+    });
+  }
+
+  function initScrollAnimations() {
+    var cards = document.querySelectorAll('.card');
+    
+    if (cards.length === 0) return;
+    
+    cards.forEach(function (card) {
+      card.classList.add('animate-on-scroll');
+    });
+
+    var observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -100px 0px',
+      threshold: 0.15
+    };
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    cards.forEach(function (card) {
+      observer.observe(card);
     });
   }
 })();
