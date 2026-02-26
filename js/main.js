@@ -56,6 +56,15 @@
     var langBtn = document.querySelector('.lang-toggle');
     if (langBtn) langBtn.addEventListener('click', toggleLang);
 
+    document.querySelectorAll('.logo-video').forEach(function (video) {
+      video.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var link = video.closest('a');
+        window.location.href = (link && link.getAttribute('href')) || 'index.html';
+      });
+    });
+
     document.addEventListener('click', function (e) {
       if (!nav || !nav.classList.contains('is-open')) return;
       if (nav.contains(e.target) || (menuBtn && menuBtn.contains(e.target))) return;
