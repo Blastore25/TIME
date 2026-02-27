@@ -122,7 +122,7 @@ img { max-width: 100%; height: auto; display: block; }
 .logo .logo-video {
   flex-shrink: 0;
   display: block;
-  height: 4.5rem;
+  height: 6rem;
   max-height: 96px;
   width: auto;
   max-width: 240px;
@@ -162,8 +162,7 @@ img { max-width: 100%; height: auto; display: block; }
   text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 .nav-main a:hover,
-.nav-main a.active { color: rgba(255,255,255,0.9); }
-.nav-main a.active { font-weight: 600; }
+.nav-main a.active { color: #1a3d1a; font-weight: 600; }
 
 .lang-toggle {
   background: rgba(255,255,255,0.2);
@@ -307,12 +306,18 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .card:hover { box-shadow: 0 8px 24px rgba(92,64,51,0.08); }
 
-/* Scroll animations */
+/* Scroll animations: dim + directional translate; from-bottom = enter from below (translate up), from-top = enter from above (translate down) */
+.animate-on-scroll,
 .card.animate-on-scroll {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(45px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
+.animate-on-scroll.animate-from-top,
+.card.animate-on-scroll.animate-from-top {
+  transform: translateY(-45px);
+}
+.animate-on-scroll.is-visible,
 .card.animate-on-scroll.is-visible {
   opacity: 1;
   transform: translateY(0);
@@ -546,4 +551,85 @@ img { max-width: 100%; height: auto; display: block; }
 .page-inicio .inicio-main .container {
   position: relative;
   z-index: 1;
+}
+
+/* ----- Splash intro (TIME page load): video background + TIME logo, then smooth dim-in of page ----- */
+.splash-active .site-header,
+.splash-active .inicio-main,
+.splash-active .site-footer {
+  visibility: hidden;
+}
+/* Page dim-in after splash: 2s fade (only on index after intro) */
+body.page-inicio.page-reveal .site-header,
+body.page-inicio.page-reveal .inicio-main,
+body.page-inicio.page-reveal .site-footer {
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+body.page-inicio.page-reveal.reveal-done .site-header,
+body.page-inicio.page-reveal.reveal-done .inicio-main,
+body.page-inicio.page-reveal.reveal-done .site-footer {
+  opacity: 1;
+}
+.splash-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(232, 224, 212, 0.4) 0%, rgba(250, 248, 245, 0.92) 100%);
+  transition: opacity 2s ease;
+  pointer-events: none;
+  overflow: hidden;
+}
+.splash-intro__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  z-index: 0;
+}
+.splash-intro::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../images/logo-plant.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.splash-intro--done {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 2s ease;
+}
+.splash-intro__logo {
+  position: relative;
+  z-index: 1;
+  max-width: 70vw;
+  width: 320px;
+  height: auto;
+  object-fit: contain;
+  animation: splashLogo 5s ease-in-out forwards;
+}
+/* 0–4s: grow + dim in, stay centered. Stays full opacity until 5s, then dims out with video (splash--done). */
+@keyframes splashLogo {
+  0% {
+    transform: scale(0.02);
+    opacity: 0;
+  }
+  80% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
 }

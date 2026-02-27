@@ -7,9 +7,13 @@
   <meta name="description" content="Medicina herbal personalizada, plantas medicinales, calendario Tzolkin maya, acompañamiento cuerpo-energía.">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#5c4033">
-  <link rel="stylesheet" href="css/style.css?v=9">
+  <link rel="stylesheet" href="css/style.css?v=10">
 </head>
-<body class="page-inicio">
+<body class="page-inicio splash-active">
+  <div id="splash-intro" class="splash-intro" aria-hidden="true">
+    <video class="splash-intro__bg" src="videos/plantgalaxy.mp4" autoplay muted playsinline></video>
+    <img src="images/TIME-removebg.png" alt="" class="splash-intro__logo">
+  </div>
   <header class="site-header">
     <div class="header-inner container">
       <a href="index.html" class="logo">
@@ -17,7 +21,7 @@
       </a>
       <button type="button" class="menu-btn" aria-label="Abrir menú">☰</button>
       <nav id="nav-main" class="nav-main">
-        <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
+        <a href="index.html" data-es="TIME" data-en="TIME">TIME</a>
         <a href="medicina-herbal.html" data-es="Medicina Herbal" data-en="Herbal Medicine">Medicina Herbal</a>
         <a href="tiempo-sagrado.html" data-es="Tiempo Sagrado" data-en="Sacred Time">Tiempo Sagrado</a>
         <a href="servicios.html" data-es="Servicios" data-en="Services">Servicios</a>
@@ -32,8 +36,8 @@
   <main class="inicio-main">
     <section class="hero">
       <div class="container">
-        <h1 data-es="Educación y Acompañamiento Consciente" data-en="Education and Conscious Support">Educación y Acompañamiento Consciente</h1>
-        <p class="intro" data-es="Medicina herbal personalizada, educación sobre plantas medicinales, integración del calendario sagrado maya (Tzolkin) y acompañamiento cuerpo–energía. Un espacio íntimo, artesanal y profesional." data-en="Personalized herbal medicine, education on medicinal plants, integration of the Mayan sacred calendar (Tzolkin) and body–energy support. An intimate, artisanal and professional space.">Medicina herbal personalizada, educación sobre plantas medicinales, integración del calendario sagrado maya (Tzolkin) y acompañamiento cuerpo–energía. Un espacio íntimo, artesanal y profesional.</p>
+        <h1 data-es="Terapia Integral de Medicina y Energía" data-en="Trascendental Integration of Medicine and Energy">Terapia Integral de Medicina y Energía</h1>
+        <p class="intro" data-es="Reconéctate con el tiempo natural, con tu conciencia y la medicina viva. El calendario se transforma de una cuenta lineal a una experiencia. El Tzolkin, Tarot de Osho y la herbolaria dialogan para acompañarte en tu proceso de equilibrio personal." data-en="Reconnect with the natural time, with your consciousness and with living medicine. The calendar transforms from a linear count into an experience. The Tzolkin, Osho Tarot and herbalism dialogue to support you in your personal process of balance.">Reconéctate con el tiempo natural, con tu conciencia y la medicina viva. El calendario se transforma de una cuenta lineal a una experiencia. El Tzolkin, Tarot de Osho y la herbolaria dialogan para acompañarte en tu propio proceso de equilibrio.</p>
         <div class="hero-ctas">
           <a href="medicina-herbal.html" class="btn btn-primary" data-es="Explorar Medicina Herbal" data-en="Explore Herbal Medicine">Explorar Medicina Herbal</a>
           <a href="tiempo-sagrado.html" class="btn btn-secondary" data-es="Conocer tu Energía (Tzolkin)" data-en="Discover Your Energy (Tzolkin)">Conocer tu Energía (Tzolkin)</a>
@@ -48,7 +52,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=9"></script>
+  <script src="js/main.js?v=10"></script>
   <script>
     if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
   </script>

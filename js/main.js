@@ -74,7 +74,35 @@
     setActiveNav();
     initCarousels();
     initScrollAnimations();
+    initSplashIntro();
   });
+
+  function initSplashIntro() {
+    if (!document.body.classList.contains('page-inicio')) return;
+    var splash = document.getElementById('splash-intro');
+    var logo = splash && splash.querySelector('.splash-intro__logo');
+    if (!splash) return;
+    var splashHidden = false;
+    function hideSplash() {
+      if (splashHidden) return;
+      splashHidden = true;
+      document.body.classList.remove('splash-active');
+      document.body.classList.add('page-reveal');
+      splash.classList.add('splash-intro--done');
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          document.body.classList.add('reveal-done');
+        });
+      });
+      setTimeout(function () {
+        splash.style.display = 'none';
+      }, 2100);
+    }
+    if (logo) {
+      logo.addEventListener('animationend', hideSplash);
+    }
+    setTimeout(hideSplash, 5000);
+  }
 
   function initCarousels() {
     document.querySelectorAll('[data-carousel]').forEach(function (carousel) {
@@ -182,12 +210,12 @@
 
   function initScrollAnimations() {
     var cards = document.querySelectorAll('.card');
-    
-    if (cards.length === 0) return;
-    
     cards.forEach(function (card) {
       card.classList.add('animate-on-scroll');
     });
+
+    var animated = document.querySelectorAll('.animate-on-scroll');
+    if (animated.length === 0) return;
 
     var observerOptions = {
       root: null,
@@ -197,15 +225,35 @@
 
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
+        var el = entry.target;
+        var rootHeight = (entry.rootBounds && entry.rootBounds.height) ? entry.rootBounds.height : window.innerHeight;
+        var top = entry.boundingClientRect.top;
+        var bottom = entry.boundingClientRect.bottom;
+
         if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
+          if (top < rootHeight / 2) {
+            el.classList.add('animate-from-top');
+            el.classList.remove('animate-from-bottom');
+          } else {
+            el.classList.add('animate-from-bottom');
+            el.classList.remove('animate-from-top');
+          }
+          el.classList.add('is-visible');
+        } else {
+          el.classList.remove('is-visible');
+          if (bottom < 0) {
+            el.classList.add('animate-from-top');
+            el.classList.remove('animate-from-bottom');
+          } else {
+            el.classList.add('animate-from-bottom');
+            el.classList.remove('animate-from-top');
+          }
         }
       });
     }, observerOptions);
 
-    cards.forEach(function (card) {
-      observer.observe(card);
+    animated.forEach(function (el) {
+      observer.observe(el);
     });
   }
 })();
