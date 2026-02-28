@@ -331,6 +331,12 @@ img { max-width: 100%; height: auto; display: block; }
 .card h3 { margin-bottom: 0.5rem; }
 .card p { color: var(--texto-suave); font-size: 0.95rem; margin-bottom: 1rem; }
 .card .btn { margin-top: 0.5rem; }
+.card-quote {
+  font-style: italic;
+  margin-top: 1rem;
+  font-size: 1.05rem;
+  color: var(--texto-suave);
+}
 
 /* Bloques de texto + imagen */
 .block-row {
@@ -344,6 +350,24 @@ img { max-width: 100%; height: auto; display: block; }
 .block-row:nth-child(even) > * { direction: ltr; }
 .block-row .text h2 { margin-bottom: 1rem; }
 .block-row .text p { color: var(--texto-suave); margin-bottom: 1rem; }
+/* Sobre mí: signature below text; z-index keeps it behind text if you tune position and overlap */
+.about-block .text {
+  position: relative;
+}
+.about-block .text > * {
+  position: relative;
+  z-index: 1;
+}
+.about-block .about-signature {
+  display: block;
+  max-width: 280px;
+  height: auto;
+  position: relative;
+  z-index: 0;
+  margin-top: -2rem; /* Tune vertical: smaller = closer to text (may overlap; image stays behind), larger = lower */
+  margin-left: auto;
+  margin-right: auto;
+}
 .block-row .img-wrap {
   aspect-ratio: 4/3;
   background: var(--arena-claro);

@@ -1,5 +1,5 @@
 // PWA Service Worker – TIME (network-first when online so updates show after one refresh)
-const CACHE_NAME = 'time-v11';
+const CACHE_NAME = 'time-v13';
 const urlsToCache = [
   'index.html',
   'medicina-herbal.html',
